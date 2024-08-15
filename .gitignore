@@ -1,2 +1,2 @@
-/nomes_aguardando
-/nomes_nao_duplicados
+/nomes_aguardando/*.xlsx
+/nomes_nao_duplicados/*.xlsx
