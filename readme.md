@@ -4,9 +4,9 @@ Este projeto utiliza a biblioteca `pandas` para carregar, filtrar e salvar dados
 
 ## Arquivos
 
-- **`BPC Leads (1).xlsx`**: Arquivo original contendo os dados a serem processados.
-- **`nomes_nao_duplicados.xlsx`**: Arquivo gerado contendo apenas os nomes não duplicados.
-- **`nomes_aguardando.xlsx`**: Arquivo gerado contendo os dados filtrados pelo status "Aguardando Resposta".
+- **`PlanilhaPrincipal.xlsx`**: Arquivo original contendo os dados a serem processados.
+- **`Planilha_nomes_nao_duplicados.xlsx`**: Arquivo gerado contendo apenas os nomes não duplicados.
+- **`Planilha_nomes_aguardando.xlsx`**: Arquivo gerado contendo os dados filtrados pelo status "Aguardando Resposta".
 
 ## Código
 
@@ -16,7 +16,7 @@ Este projeto utiliza a biblioteca `pandas` para carregar, filtrar e salvar dados
 import pandas as pd
 
 # Carregar o arquivo Excel
-df = pd.read_excel('../BPC Leads (1).xlsx')
+df = pd.read_excel('../PlanilhaPrincipal.xlsx')
 
 # Filtrar os nomes não duplicados na coluna "Instagram Adv"
 unique_df = df.drop_duplicates(subset=['Instagram Adv'], keep=False)
