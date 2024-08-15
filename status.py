@@ -1,27 +1,26 @@
-# Projeto de Filtragem e Processamento de Dados Excel
-
-Este projeto utiliza a biblioteca `pandas` para carregar, filtrar e salvar dados de arquivos Excel. O objetivo é remover nomes duplicados e filtrar dados com base em um status específico.
-
-## Arquivos
-
-- **`BPC Leads (1).xlsx`**: Arquivo original contendo os dados a serem processados.
-- **`nomes_nao_duplicados.xlsx`**: Arquivo gerado contendo apenas os nomes não duplicados.
-- **`nomes_aguardando.xlsx`**: Arquivo gerado contendo os dados filtrados pelo status "Aguardando Resposta".
-
-## Código
-
-### Script 1: Remover Nomes Duplicados
-
-```python
 import pandas as pd
 
 # Carregar o arquivo Excel
-df = pd.read_excel('../BPC Leads (1).xlsx')
+df = pd.read_excel('./nomes_nao_duplicados.xlsx')
 
-# Filtrar os nomes não duplicados na coluna "Instagram Adv"
-unique_df = df.drop_duplicates(subset=['Instagram Adv'], keep=False)
+# Imprimir as primeiras linhas para verificar o carregamento
+print("Dados carregados:")
+print(df.head())
 
-# Salvar os nomes não duplicados em um novo arquivo Excel
-unique_df.to_excel('nomes_nao_duplicados.xlsx', index=False)
-
-print('Arquivo salvo como nomes_nao_duplicados.xlsx')
+# Verificar se a coluna "Status" existe e aplicar o filtro
+if 'Status' in df.columns:
+    # Filtrar pelo status "Aguardando Resposta"
+    filtered_df = df[df['Status'] == 'Aguardando Resposta']
+    
+    # Imprimir para verificar a filtragem
+    print("\nDados após filtragem por status:")
+    print(filtered_df.head())
+    
+    # Salvar os resultados filtrados em um novo arquivo Excel
+    if not filtered_df.empty:
+        filtered_df.to_excel('nomes_aguardando.xlsx', index=False)
+        print('Arquivo salvo como nomes_aguardando.xlsx')
+    else:
+        print('Nenhum dado encontrado com o status "Aguardando Resposta".')
+else:
+    print("Coluna 'Status' não encontrada no DataFrame.")
