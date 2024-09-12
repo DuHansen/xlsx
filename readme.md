@@ -1,3 +1,7 @@
+### Start Script:
+
+py index.py
+
 # Projeto de Filtragem e Processamento de Dados Excel
 
 Este projeto utiliza a biblioteca `pandas` para carregar, filtrar e salvar dados de arquivos Excel. O objetivo é remover nomes duplicados e filtrar dados com base em um status específico.
